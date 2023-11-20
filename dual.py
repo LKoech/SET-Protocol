@@ -46,7 +46,8 @@ class RequestMessage():
         self.HPOMD = SHA1.new(data = self.POMD)
         self.HPOMD = self.HPOMD.hexdigest()
 
-    '''Function to encrypt POMD using user's private key and generate DS'''
+    '''Function to encrypt POMD us
+    ing user's private key and generate DS'''
     def encryptPOMD(self):
         userKey = RSA.import_key(open("userprivate.pem").read(),passphrase = "passphrase-used-by-user")
         cipher_rsa = PKCS1_OAEP.new(userKey)
@@ -170,5 +171,4 @@ def main():
     a.completeRequest()
     verifyBank()
     verifyMerchant()
-    
 main()
